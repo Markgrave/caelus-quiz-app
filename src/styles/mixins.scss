@@ -1,0 +1,46 @@
+@use "./variables.css";
+
+@mixin flex(
+  $justify: flex-start,
+  $align: stretch,
+  $direction: row,
+  $wrap: nowrap,
+  $gap: 0
+) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin title(
+  $font: var(--font-heading),
+  $color: var(--color-neutral-50),
+  $font-size: 0.9rem,
+  $font-size-desktop: 1.4rem
+) {
+  font-family: $font;
+  color: $color;
+  font-size: $font-size;
+
+  @media (min-width: var(--desktop-min)) {
+    font-size: $font-size-desktop;
+  }
+}
+
+@mixin text(
+  $font: var(--font-body),
+  $color: var(--color-neutral-50),
+  $font-size: 0.6rem,
+  $font-size-desktop: 1rem
+) {
+  font-family: $font;
+  font-size: $font-size;
+  color: $color;
+
+  @media (min-width: var(--desktop-min)) {
+    font-size: $font-size-desktop;
+  }
+}
