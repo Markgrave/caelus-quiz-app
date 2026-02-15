@@ -1,0 +1,30 @@
+@use "../../styles/mixins.scss";
+
+.headerWrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: var(--space-md);
+  transition: all 0.3s ease;
+}
+
+.header {
+  @include mixins.flex(space-between, center);
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0 var(--space-xl);
+  border-radius: var(--space-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.title {
+  @include mixins.title($font-size: 2rem, $font-size-desktop: 2.5rem);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
