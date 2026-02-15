@@ -1,4 +1,4 @@
-@use "./variables.css";
+$desktop-min: 1248.5px;
 
 @mixin flex(
   $justify: flex-start,
@@ -25,7 +25,7 @@
   color: $color;
   font-size: $font-size;
 
-  @media (min-width: var(--desktop-min)) {
+  @media (min-width: $desktop-min) {
     font-size: $font-size-desktop;
   }
 }
@@ -40,7 +40,7 @@
   font-size: $font-size;
   color: $color;
 
-  @media (min-width: var(--desktop-min)) {
+  @media (min-width: $desktop-min) {
     font-size: $font-size-desktop;
   }
 }
