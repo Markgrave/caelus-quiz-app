@@ -1,4 +1,4 @@
-import Header from "../../components/Header/index.jsx";
+import Header from "../ui/Header/index.jsx";
 import styles from "./Layout.module.scss";
 
 const MainLayout = ({ children }) => {
