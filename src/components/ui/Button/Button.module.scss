@@ -1,0 +1,37 @@
+@use "../../../styles/mixins.scss";
+
+.button {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--space-xl);
+  cursor: pointer;
+  color: var(--color-neutral-200);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.1s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--color-neutral-50);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.content {
+  @include mixins.text();
+}
