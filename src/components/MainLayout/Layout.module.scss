@@ -6,9 +6,18 @@
 }
 
 .mainContent {
-  flex: 1;
-  width: 100%;
-  max-width: 1400px;
+  @include mixins.flex(
+    center,
+    center,
+    $direction: column,
+    $gap: var(--space-xl)
+  );
+  padding: 0 var(--space-md);
+  width: 90%;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: var(--space-xl);
+
+  @media (min-width: mixins.$desktop-min) {
+    @include mixins.flex(center, center, $gap: var(--space-xl));
+  }
 }

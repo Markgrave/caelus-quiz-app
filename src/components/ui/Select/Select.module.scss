@@ -1,0 +1,5 @@
+@use "../../../styles/mixins.scss";
+
+.select {
+  @include mixins.text();
+}

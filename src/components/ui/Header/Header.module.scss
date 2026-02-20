@@ -1,4 +1,4 @@
-@use "../../styles/mixins.scss";
+@use "../../../styles/mixins.scss";
 
 .headerWrapper {
   position: sticky;
@@ -7,15 +7,14 @@
   right: 0;
   z-index: 1000;
   padding: var(--space-md);
-  transition: all 0.3s ease;
 }
 
 .header {
   @include mixins.flex(space-between, center);
-  max-width: 1400px;
-  margin: 0 auto;
+  max-width: 90%;
+  margin: 0 auto var(--space-xl) auto;
   height: 5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   padding: 0 var(--space-xl);
   border-radius: var(--space-xl);
   border: 1px solid rgba(255, 255, 255, 0.1);
