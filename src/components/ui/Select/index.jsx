@@ -30,7 +30,7 @@ const customStyles = {
   }),
   menu: (baseStyles) => ({
     ...baseStyles,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    background: "var(--gradient)",
     borderRadius: "var(--space-md)",
     borderColor: "rgba(255, 255, 255, 0.2)",
   }),
@@ -45,13 +45,14 @@ const customStyles = {
   }),
 };
 
-const SelectComponent = ({ options, placeholder }) => {
+const SelectComponent = ({ options, placeholder, onChange }) => {
   return (
     <Select
       className={styles.select}
       placeholder={placeholder}
       styles={customStyles}
       options={options}
+      onChange={onChange}
     />
   );
 };

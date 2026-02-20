@@ -1,19 +1,22 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import SelectComponent from "../ui/Select";
 
-const categories = [
-  { value: "1", label: "Science" },
-  { value: "2", label: "Art" },
-  { value: "3", label: "History" },
-  { value: "4", label: "Geography" },
-  { value: "5", label: "Music" },
-  { value: "6", label: "Sports" },
-];
+import { getCategories } from "../../lib/api";
 
-const CategorySelect = () => {
-  useEffect(() => {}, []);
+const CategorySelect = ({ handleOnChange }) => {
+  const [categories, setCategories] = useState([]);
 
-  return <SelectComponent placeholder="Category..." options={categories} />;
+  useEffect(() => {
+    getCategories().then((data) => setCategories(data));
+  }, []);
+
+  return (
+    <SelectComponent
+      placeholder="Category..."
+      options={categories}
+      onChange={handleOnChange}
+    />
+  );
 };
 
 export default CategorySelect;
