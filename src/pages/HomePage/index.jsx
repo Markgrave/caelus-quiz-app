@@ -7,13 +7,12 @@ import DifficultySelect from "../../components/DifficultySelect/index.jsx";
 import Button from "../../components/ui/Button/index.jsx";
 import { useQuizStore } from "../../lib/store.js";
 import { getQuestions } from "../../lib/api.js";
-import { shuffleArray } from "../../lib/utils.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { settings, setSettings, startQuiz } = useQuizStore();
-  const [questions, setQuestions] = useState([]);
+  const { settings, setSettings, startQuiz, questions, setQuestions } =
+    useQuizStore();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -21,19 +20,18 @@ const HomePage = () => {
     setLoading(true);
 
     try {
-      const questions = await getQuestions(
+      const fetchedQuestions = await getQuestions(
         settings.amount,
-        settings.category,
+        settings.categoryIndex,
         settings.difficulty,
       );
-      setQuestions(questions);
-      console.log(questions);
+
+      startQuiz(fetchedQuestions);
+      navigate("/quiz");
     } catch (error) {
-      console.log(error);
+      console.error("Failed to fetch questions:", error);
     } finally {
       setLoading(false);
-      startQuiz(questions);
-      navigate("/quiz");
     }
   };
 
@@ -54,7 +52,12 @@ const HomePage = () => {
           <div className={styles.configWrapper}>
             <div className={styles.configItem}>
               <CategorySelect
-                handleOnChange={(e) => setSettings({ category: e.value })}
+                handleOnChange={(e) =>
+                  setSettings({
+                    categoryIndex: e.value,
+                    categoryLabel: e.label,
+                  })
+                }
               />
             </div>
 
@@ -75,7 +78,7 @@ const HomePage = () => {
         <Button
           disabled={
             settings.amount === 0 ||
-            settings.category === null ||
+            settings.categoryIndex === null ||
             settings.difficulty === ""
           }
           onClick={handleQuizStart}
