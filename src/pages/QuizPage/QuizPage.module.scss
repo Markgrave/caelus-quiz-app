@@ -1,0 +1,70 @@
+@use "../../styles/mixins.scss";
+
+.contentWrapper {
+  @include mixins.flex(flex-start, stretch, column, $gap: var(--space-xl));
+  width: 100%;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-xl);
+  border-radius: var(--space-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
+  @media (min-width: mixins.$desktop-min) {
+    justify-content: flex-start;
+  }
+}
+
+.pageHeader {
+  @include mixins.flex(space-between, center);
+  width: 100%;
+}
+
+.headerLeft,
+.headerRight {
+  @include mixins.title($font-size-desktop: 1.3rem);
+}
+
+.headerRight {
+  @include mixins.flex(center, center, $gap: var(--space-xl));
+}
+
+.headerLeft {
+  @include mixins.flex(space-between, center);
+  width: 70%;
+
+  @media (min-width: mixins.$desktop-min) {
+    width: 40%;
+  }
+}
+
+.progressBar {
+  height: 1em;
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: var(--space-xl);
+}
+
+.progressBarFill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: var(--space-xl);
+  transition: width 0.3s ease-in-out;
+}
+
+.questionWrapper {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.timer {
+  @include mixins.flex(center, center, $gap: var(--space-xs));
+}
+
+.score {
+  @include mixins.flex(center, center, $gap: var(--space-xs));
+}

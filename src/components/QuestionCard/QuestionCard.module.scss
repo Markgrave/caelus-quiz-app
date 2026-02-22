@@ -1,0 +1,25 @@
+@use "../../styles/mixins.scss";
+
+.card {
+  @include mixins.flex(center, stretch, column, $gap: var(--space-lg));
+  width: 100%;
+  flex: 1;
+}
+
+.question {
+  @include mixins.text($font-size: 1.2rem, $font-size-desktop: 1.1rem);
+  @include mixins.flex(center, center);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: var(--space-md);
+  width: 100%;
+  height: 15em;
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: var(--space-md);
+}
