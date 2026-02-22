@@ -16,10 +16,23 @@
     border-color 0.3s ease,
     opacity 0.1s ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.2);
     color: var(--color-neutral-50);
     border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &.answer {
+    border-radius: var(--space-md);
+    @include mixins.text($font-size: 1rem);
+  }
+
+  &.right {
+    border-color: rgb(34, 197, 94);
+  }
+
+  &.wrong {
+    border-color: rgb(239, 68, 68);
   }
 
   &:active {
@@ -29,6 +42,11 @@
   &.disabled {
     cursor: not-allowed;
     opacity: 0.5;
+
+    &.right,
+    &.wrong {
+      opacity: 1;
+    }
   }
 }
 
