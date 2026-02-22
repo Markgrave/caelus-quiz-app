@@ -42,7 +42,7 @@ export const getQuestions = async (amount, category, difficulty) => {
       correct_answer: decodeURIComponent(q.correct_answer),
       incorrect_answers: decodeURIComponent(q.incorrect_answers),
       all_answers: shuffleArray([
-        ...decodeURIComponent(q.incorrect_answers),
+        ...q.incorrect_answers.map((answer) => decodeURIComponent(answer)),
         decodeURIComponent(q.correct_answer),
       ]),
     };
