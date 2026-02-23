@@ -1,0 +1,74 @@
+@use "../../styles/mixins";
+
+.contentWrapper {
+  @include mixins.flex(flex-start, center, column, $gap: var(--space-md));
+  width: 80%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-lg);
+  border-radius: var(--space-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  text-align: center;
+
+  @media (min-width: mixins.$desktop-min) {
+    @include mixins.flex(flex-start, center, column, $gap: var(--space-xl));
+    padding: var(--space-xl);
+  }
+}
+
+.heading {
+  @include mixins.title();
+}
+
+.text {
+  @include mixins.text();
+}
+
+.recordWrapper {
+  @include mixins.flex(space-between, center, $gap: var(--space-md));
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--space-xl);
+
+  @media (min-width: mixins.$desktop-min) {
+    width: 60%;
+  }
+}
+
+.inputWrapper {
+  @include mixins.flex(center, center, $gap: var(--space-sm));
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: var(--space-xs);
+  border-radius: var(--space-xl);
+  cursor: pointer;
+  color: var(--color-neutral-200);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.1s ease;
+  width: 100%;
+
+  @media (min-width: mixins.$desktop-min) {
+    padding: var(--space-md);
+  }
+}
+
+.attention {
+  font-weight: 700;
+  color: var(--color-neutral-100);
+}
+
+.actionsWrapper {
+  @include mixins.flex(center, center, $gap: var(--space-3xl));
+}
