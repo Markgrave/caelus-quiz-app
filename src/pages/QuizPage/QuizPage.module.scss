@@ -28,7 +28,11 @@
 }
 
 .headerRight {
-  @include mixins.flex(center, center, $gap: var(--space-xl));
+  @include mixins.flex(center, center, $gap: var(--space-xs));
+
+  @media (min-width: mixins.$desktop-min) {
+    @include mixins.flex(center, center, $gap: var(--space-xl));
+  }
 }
 
 .headerLeft {

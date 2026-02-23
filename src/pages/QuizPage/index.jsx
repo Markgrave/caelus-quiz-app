@@ -7,8 +7,10 @@ import { CiStar } from "react-icons/ci";
 import { useQuizStore } from "../../lib/store";
 import { useTimer } from "../../hooks/useTimer";
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const QuizPage = () => {
+  const navigate = useNavigate();
   const {
     questions,
     settings,
@@ -31,6 +33,10 @@ const QuizPage = () => {
         setSelectedAnswer(null);
         nextQuestion();
         resetTimer();
+
+        if (currentIndex >= questions.length - 1) {
+          navigate("/quiz/results");
+        }
       }, 1000);
     }
   }, [answered, answerQuestion]);
@@ -45,6 +51,10 @@ const QuizPage = () => {
       setSelectedAnswer(null);
       nextQuestion();
       resetTimer();
+
+      if (currentIndex >= questions.length - 1) {
+        navigate("/quiz/results");
+      }
     }, 1000);
   };
 

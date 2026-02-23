@@ -5,14 +5,14 @@ import CategorySelect from "../../components/CategorySelect/index.jsx";
 import AmountSelect from "../../components/AmountSelect/index.jsx";
 import DifficultySelect from "../../components/DifficultySelect/index.jsx";
 import Button from "../../components/ui/Button/index.jsx";
+import Leaderboard from "../../components/Leaderboard/index.jsx";
 import { useQuizStore } from "../../lib/store.js";
 import { getQuestions } from "../../lib/api.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { settings, setSettings, startQuiz, questions, setQuestions } =
-    useQuizStore();
+  const { settings, setSettings, startQuiz } = useQuizStore();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -87,7 +87,7 @@ const HomePage = () => {
         </Button>
       </section>
 
-      <section className={styles.leaderboardWrapper}></section>
+      <Leaderboard />
     </MainLayout>
   );
 };
