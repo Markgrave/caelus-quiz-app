@@ -53,9 +53,14 @@ export const useQuizStore = create(
           timeLeft: 30,
         });
       },
-      finishQuiz: () => {
+      resetQuiz: () => {
         set({
-          status: "finished",
+          status: "idle",
+          questions: [],
+          score: 0,
+          timeLeft: 30,
+          currentIndex: 0,
+          answers: [],
         });
       },
     }),
