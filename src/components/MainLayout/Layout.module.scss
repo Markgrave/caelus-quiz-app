@@ -18,6 +18,6 @@
   margin: 0 auto;
 
   @media (min-width: mixins.$desktop-min) {
-    @include mixins.flex(center, center, $gap: var(--space-xl));
+    @include mixins.flex(center, stretch, $gap: var(--space-xl));
   }
 }

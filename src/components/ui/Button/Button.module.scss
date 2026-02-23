@@ -5,8 +5,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  padding: var(--space-md) var(--space-lg);
+    0 2px 4px -1px #00000008;
+  padding: var(--space-sm) var(--space-md);
   border-radius: var(--space-xl);
   cursor: pointer;
   color: var(--color-neutral-200);
@@ -16,13 +16,19 @@
     border-color 0.3s ease,
     opacity 0.1s ease;
 
+  @media (min-width: mixins.$desktop-min) {
+    padding: var(--space-md) var(--space-lg);
+  }
+
   &:hover:not(:disabled) {
     background: rgba(255, 255, 255, 0.2);
     color: var(--color-neutral-50);
     border-color: rgba(255, 255, 255, 0.2);
   }
 
-  &.answer {
+  &.answer,
+  &.right,
+  &.wrong {
     border-radius: var(--space-md);
     @include mixins.text($font-size: 1rem);
   }

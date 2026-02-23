@@ -1,0 +1,55 @@
+@use "../../styles/mixins.scss";
+
+.leaderboardWrapper {
+  @include mixins.flex(flex-start, stretch, column, $gap: var(--space-md));
+  width: fit-content;
+  position: sticky;
+  background: rgba(255, 255, 255, 0.05);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--space-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
+  @media (min-width: mixins.$desktop-min) {
+    padding: var(--space-md) var(--space-xl);
+  }
+}
+
+.entries {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.entryWrapper {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--space-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  @include mixins.flex();
+}
+
+.entry {
+  @include mixins.flex(center, center, $gap: var(--space-md));
+  @include mixins.text(
+    $font-size-desktop: 0.8rem,
+    $color: var(--color-neutral-200)
+  );
+  flex: 1;
+}
+
+.award {
+  @include mixins.text($font-size-desktop: 1.5rem);
+}
+
+.heading {
+  @include mixins.title();
+  text-align: center;
+}
