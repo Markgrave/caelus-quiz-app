@@ -1,4 +1,5 @@
 import SelectComponent from "../ui/Select";
+import { useQuizStore } from "../../lib/store";
 
 const options = [
   { value: 5, label: "5" },
@@ -8,9 +9,10 @@ const options = [
 ];
 
 const AmountSelect = ({ handleOnChange }) => {
+  const { settings } = useQuizStore();
   return (
     <SelectComponent
-      placeholder="Amount..."
+      placeholder={settings.amount || "Amount..."}
       options={options}
       onChange={handleOnChange}
     />

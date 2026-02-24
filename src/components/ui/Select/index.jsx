@@ -10,6 +10,7 @@ const customStyles = {
     backgroundColor: "rgba(255, 255, 255, 0.15)",
     borderRadius: "var(--space-xl)",
     color: "var(--color-neutral-50)",
+    padding: "var(--space-xs)",
     width: "15rem",
   }),
   option: (baseStyles, state) => ({
