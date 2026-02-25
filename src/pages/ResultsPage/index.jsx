@@ -24,6 +24,10 @@ const ResultsPage = () => {
     resetQuiz();
   };
 
+  const handleReview = () => {
+    navigate("/quiz/review");
+  };
+
   return (
     <MainLayout>
       <section className={styles.contentWrapper}>
@@ -64,7 +68,7 @@ const ResultsPage = () => {
         </div>
 
         <div className={styles.actionsWrapper}>
-          <Button>Review</Button>
+          <Button onClick={handleReview}>Review</Button>
           <Button onClick={handlePlayAgain}>Play again</Button>
         </div>
       </section>

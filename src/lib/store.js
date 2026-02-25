@@ -57,6 +57,12 @@ export const useQuizStore = create(
         set({
           status: "idle",
           questions: [],
+          settings: {
+            categoryIndex: null,
+            categoryLabel: "",
+            amount: 0,
+            difficulty: "",
+          },
           score: 0,
           timeLeft: 30,
           currentIndex: 0,
