@@ -13,13 +13,13 @@ export const useQuizStore = create(
         difficulty: "",
       },
       score: 0,
-      error: null,
       timeLeft: 30,
       currentIndex: 0,
       answers: [],
 
       setSettings: (newSettings) =>
         set((state) => ({ settings: { ...state.settings, ...newSettings } })),
+      setError: (err) => set({ error: err }),
       startQuiz: (questions) =>
         set({
           status: "active",
@@ -49,10 +49,10 @@ export const useQuizStore = create(
 
         set({
           currentIndex: isLastQuestion ? currentIndex : currentIndex + 1,
-          status: isLastQuestion ? "finished" : "active",
           timeLeft: 30,
         });
       },
+      finishQuiz: () => set({ status: "finished" }),
       resetQuiz: () => {
         set({
           status: "idle",
@@ -67,6 +67,7 @@ export const useQuizStore = create(
           timeLeft: 30,
           currentIndex: 0,
           answers: [],
+          error: null,
         });
       },
     }),
