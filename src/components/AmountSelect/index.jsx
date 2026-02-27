@@ -12,9 +12,10 @@ const AmountSelect = ({ handleOnChange }) => {
   const { settings } = useQuizStore();
   return (
     <SelectComponent
-      placeholder={settings.amount || "Amount..."}
+      placeholder="Amount..."
       options={options}
       onChange={handleOnChange}
+      value={options.find((opt) => opt.value === settings.amount) || null}
     />
   );
 };

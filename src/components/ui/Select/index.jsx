@@ -46,7 +46,7 @@ const customStyles = {
   }),
 };
 
-const SelectComponent = ({ options, placeholder, onChange }) => {
+const SelectComponent = ({ options, placeholder, onChange, value }) => {
   return (
     <Select
       className={styles.select}
@@ -54,6 +54,7 @@ const SelectComponent = ({ options, placeholder, onChange }) => {
       styles={customStyles}
       options={options}
       onChange={onChange}
+      value={value}
     />
   );
 };

@@ -14,9 +14,12 @@ const CategorySelect = ({ handleOnChange }) => {
 
   return (
     <SelectComponent
-      placeholder={settings.categoryLabel || "Category..."}
+      placeholder="Category..."
       options={categories}
       onChange={handleOnChange}
+      value={
+        categories.find((cat) => cat.value === settings.categoryIndex) || null
+      }
     />
   );
 };

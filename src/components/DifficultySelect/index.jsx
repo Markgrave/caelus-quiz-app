@@ -11,12 +11,10 @@ const DifficultySelect = ({ handleOnChange }) => {
   const { settings } = useQuizStore();
   return (
     <SelectComponent
-      placeholder={
-        settings.difficulty.toString().charAt(0).toUpperCase() +
-          settings.difficulty.toString().slice(1) || "Difficulty..."
-      }
+      placeholder="Difficulty..."
       options={options}
       onChange={handleOnChange}
+      value={options.find((opt) => opt.value === settings.difficulty) || null}
     />
   );
 };
