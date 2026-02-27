@@ -6,7 +6,7 @@ import { CiStar } from "react-icons/ci";
 
 import { useQuizStore } from "../../lib/store";
 import { useTimer } from "../../hooks/useTimer";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const QuizPage = () => {
@@ -18,6 +18,8 @@ const QuizPage = () => {
     answerQuestion,
     score,
     nextQuestion,
+    status,
+    finishQuiz,
   } = useQuizStore();
   const [answered, setAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -35,6 +37,7 @@ const QuizPage = () => {
         resetTimer();
 
         if (currentIndex >= questions.length - 1) {
+          finishQuiz();
           navigate("/quiz/results");
         }
       }, 1000);
@@ -53,12 +56,22 @@ const QuizPage = () => {
       resetTimer();
 
       if (currentIndex >= questions.length - 1) {
+        finishQuiz();
         navigate("/quiz/results");
       }
     }, 1000);
   };
 
   const { timeLeft, resetTimer } = useTimer(30, handleTimeout, isActive);
+
+  useEffect(() => {
+    if (
+      questions.length === 0 ||
+      (status !== "active" && status !== "finished")
+    ) {
+      navigate("/");
+    }
+  }, [status, questions.length, navigate]);
 
   return (
     <MainLayout>

@@ -4,12 +4,13 @@ import Button from "../../components/ui/Button";
 import Leaderboard from "../../components/Leaderboard";
 
 import { useQuizStore } from "../../lib/store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { addValue } from "../../lib/leaderboard";
 
 const ResultsPage = () => {
-  const { score, answers, questions, settings, resetQuiz } = useQuizStore();
+  const { score, answers, questions, settings, resetQuiz, status } =
+    useQuizStore();
   const correctAnswers = answers.filter(
     (answer, index) =>
       questions[index] && answer === questions[index].correct_answer,
@@ -27,6 +28,12 @@ const ResultsPage = () => {
   const handleReview = () => {
     navigate("/quiz/review");
   };
+
+  useEffect(() => {
+    if (status !== "finished") {
+      navigate("/");
+    }
+  }, [status]);
 
   return (
     <MainLayout>

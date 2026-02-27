@@ -3,9 +3,10 @@ import MainLayout from "../../components/MainLayout";
 import Button from "../../components/ui/Button";
 import { useQuizStore } from "../../lib/store";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const ReviewPage = () => {
-  const { questions, answers, resetQuiz } = useQuizStore();
+  const { questions, answers, resetQuiz, status } = useQuizStore();
   const navigate = useNavigate();
 
   const handlePlayAgain = () => {
@@ -17,16 +18,11 @@ const ReviewPage = () => {
     navigate("/");
   };
 
-  if (questions.length === 0) {
-    return (
-      <MainLayout>
-        <section className={styles.contentWrapper}>
-          <h2 className={styles.heading}>No quiz data found</h2>
-          <Button onClick={handleReturnHome}>Go back home</Button>
-        </section>
-      </MainLayout>
-    );
-  }
+  useEffect(() => {
+    if (status !== "finished") {
+      navigate("/");
+    }
+  }, [status]);
 
   return (
     <MainLayout>

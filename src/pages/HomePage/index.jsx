@@ -12,12 +12,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { settings, setSettings, startQuiz } = useQuizStore();
+  const { settings, setSettings, startQuiz, resetQuiz, error, setError } =
+    useQuizStore();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleQuizStart = async () => {
     setLoading(true);
+    setError(null);
 
     try {
       const fetchedQuestions = await getQuestions(
@@ -25,11 +27,10 @@ const HomePage = () => {
         settings.categoryIndex,
         settings.difficulty,
       );
-
       startQuiz(fetchedQuestions);
       navigate("/quiz");
-    } catch (error) {
-      console.error("Failed to fetch questions:", error);
+    } catch (err) {
+      setError("Failed to load questions. Please, try again.");
     } finally {
       setLoading(false);
     }
@@ -75,16 +76,36 @@ const HomePage = () => {
           </div>
         </div>
 
-        <Button
-          disabled={
-            settings.amount === 0 ||
-            settings.categoryIndex === null ||
-            settings.difficulty === ""
-          }
-          onClick={handleQuizStart}
-        >
-          {loading ? "LOADING..." : "START QUIZ"}
-        </Button>
+        {error ? (
+          <div className={styles.errorWrapper}>
+            <div>
+              <p className={styles.description}>{error}</p>
+            </div>
+            <Button
+              disabled={
+                settings.amount === 0 ||
+                settings.categoryIndex === null ||
+                settings.difficulty === "" ||
+                loading
+              }
+              onClick={handleQuizStart}
+            >
+              {loading ? "LOADING..." : error ? "Retry" : "START QUIZ"}
+            </Button>
+          </div>
+        ) : (
+          <Button
+            disabled={
+              settings.amount === 0 ||
+              settings.categoryIndex === null ||
+              settings.difficulty === "" ||
+              loading
+            }
+            onClick={handleQuizStart}
+          >
+            {loading ? "LOADING..." : error ? "Retry" : "START QUIZ"}
+          </Button>
+        )}
       </section>
 
       <Leaderboard />
