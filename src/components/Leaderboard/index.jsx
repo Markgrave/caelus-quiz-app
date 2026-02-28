@@ -1,6 +1,6 @@
 import { getLeaderboard, clearLeaderboard } from "../../lib/leaderboard";
 import styles from "./Leaderboard.module.scss";
-import Button from "../ui/Button";
+import { motion } from "framer-motion";
 
 import { GiPodiumWinner } from "react-icons/gi";
 import { GiPodiumSecond } from "react-icons/gi";
@@ -15,7 +15,13 @@ const Leaderboard = () => {
       <div className={styles.entries}>
         {leaderboard.map((entry) => (
           <div key={entry.id} className={styles.entryWrapper}>
-            <div className={styles.entry}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              className={styles.entry}
+            >
               {leaderboard.indexOf(entry) === 0 ? (
                 <p className={styles.award}>
                   <GiPodiumWinner />
@@ -32,7 +38,7 @@ const Leaderboard = () => {
               <p>{entry.name}</p>
               <p>{entry.score}pts</p>
               <p>{entry.category}</p>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>
