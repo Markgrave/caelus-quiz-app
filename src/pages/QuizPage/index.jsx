@@ -3,6 +3,9 @@ import styles from "./QuizPage.module.scss";
 import QuestionCard from "../../components/QuestionCard/index.jsx";
 import { CiTimer } from "react-icons/ci";
 import { CiStar } from "react-icons/ci";
+import useSound from "use-sound";
+import correct from "../../../public/sounds/correct-answer.wav";
+import incorrect from "../../../public/sounds/incorrect-answer.mp3";
 
 import { useQuizStore } from "../../lib/store";
 import { useTimer } from "../../hooks/useTimer";
@@ -24,6 +27,8 @@ const QuizPage = () => {
   const [answered, setAnswered] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const isActive = !answered;
+  const [playCorrect] = useSound(correct);
+  const [playIncorrect] = useSound(incorrect);
 
   const handleTimeout = useCallback(() => {
     if (!answered) {
@@ -48,6 +53,12 @@ const QuizPage = () => {
     setAnswered(true);
     setSelectedAnswer(answer);
     answerQuestion(answer);
+
+    if (answer === questions[currentIndex].correct_answer) {
+      playCorrect();
+    } else {
+      playIncorrect();
+    }
 
     setTimeout(() => {
       setAnswered(false);

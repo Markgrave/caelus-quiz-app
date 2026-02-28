@@ -20,6 +20,7 @@
     "react-select": "^5.10.2",
     "sass-embedded": "^1.97.3",
     "scss": "^0.2.4",
+    "use-sound": "^5.0.0",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
