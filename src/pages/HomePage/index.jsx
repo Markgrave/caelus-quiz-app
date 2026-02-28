@@ -1,4 +1,3 @@
-import MainLayout from "../../components/MainLayout/index.jsx";
 import styles from "./HomePage.module.scss";
 
 import CategorySelect from "../../components/CategorySelect/index.jsx";
@@ -37,7 +36,7 @@ const HomePage = () => {
   };
 
   return (
-    <MainLayout>
+    <>
       <section className={styles.contentWrapper}>
         <div className={styles.content}>
           <div className={styles.textWrapper}>
@@ -109,7 +108,7 @@ const HomePage = () => {
       </section>
 
       <Leaderboard />
-    </MainLayout>
+    </>
   );
 };
 

@@ -1,4 +1,3 @@
-import MainLayout from "../../components/MainLayout";
 import styles from "./ResultsPage.module.scss";
 import Button from "../../components/ui/Button";
 import Leaderboard from "../../components/Leaderboard";
@@ -30,13 +29,15 @@ const ResultsPage = () => {
   };
 
   useEffect(() => {
-    if (status !== "finished") {
+    if (status === "idle") {
       navigate("/");
+    } else if (status === "active") {
+      navigate("/quiz");
     }
-  }, [status]);
+  }, [status, navigate]);
 
   return (
-    <MainLayout>
+    <>
       <section className={styles.contentWrapper}>
         <h2 className={styles.heading}>Quiz Completed!</h2>
         <p className={styles.text}>
@@ -81,7 +82,7 @@ const ResultsPage = () => {
       </section>
 
       <Leaderboard />
-    </MainLayout>
+    </>
   );
 };
 

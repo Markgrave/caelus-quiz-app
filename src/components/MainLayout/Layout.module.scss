@@ -6,16 +6,20 @@
 }
 
 .mainContent {
+  padding: 0 var(--space-md);
+  width: 90%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.pageContainer {
+  width: 100%;
   @include mixins.flex(
     center,
     center,
     $direction: column,
     $gap: var(--space-xl)
   );
-  padding: 0 var(--space-md);
-  width: 90%;
-  box-sizing: border-box;
-  margin: 0 auto;
 
   @media (min-width: mixins.$desktop-min) {
     @include mixins.flex(center, stretch, $gap: var(--space-xl));

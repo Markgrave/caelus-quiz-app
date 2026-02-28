@@ -1,4 +1,3 @@
-import MainLayout from "../../components/MainLayout";
 import styles from "./QuizPage.module.scss";
 import QuestionCard from "../../components/QuestionCard/index.jsx";
 import { CiTimer } from "react-icons/ci";
@@ -34,6 +33,7 @@ const QuizPage = () => {
     if (!answered) {
       answerQuestion("");
       setAnswered(true);
+      playIncorrect();
 
       setTimeout(() => {
         setAnswered(false);
@@ -85,7 +85,7 @@ const QuizPage = () => {
   }, [status, questions.length, navigate]);
 
   return (
-    <MainLayout>
+    <>
       <section className={styles.contentWrapper}>
         <div className={styles.pageHeader}>
           <div className={styles.headerLeft}>
@@ -128,7 +128,7 @@ const QuizPage = () => {
           />
         </div>
       </section>
-    </MainLayout>
+    </>
   );
 };
 
