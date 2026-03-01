@@ -31,7 +31,16 @@
   padding-right: var(--space-sm);
 
   &::-webkit-scrollbar {
-    width: 0;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--space-sm);
   }
 }
 
