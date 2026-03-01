@@ -56,9 +56,18 @@
   @include mixins.flex(
     $justify: flex-start,
     $align: flex-start,
+    $direction: column,
     $gap: var(--space-sm)
   );
   @include mixins.text($font-size: 0.9rem, $font-size-desktop: 1rem);
+
+  @media (min-width: mixins.$desktop-min) {
+    @include mixins.flex(
+      $justify: flex-start,
+      $align: flex-start,
+      $gap: var(--space-sm)
+    );
+  }
 }
 
 .label {
